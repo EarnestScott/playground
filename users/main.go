@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/EarnestScott/Playground/users/controllers"
-	"github.com/EarnestScott/Playground/users/database"
-	"github.com/EarnestScott/Playground/users/middlewares"
+	"github.com/EarnestScott/playground/users/controllers"
+	"github.com/EarnestScott/playground/users/database"
+	"github.com/EarnestScott/playground/users/middlewares"
 	"github.com/gin-gonic/gin"
 )
 

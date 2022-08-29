@@ -3,7 +3,7 @@ package middlewares
 import (
 	"net/http"
 
-	"github.com/EarnestScott/Playground/users/auth"
+	"github.com/EarnestScott/playground/users/auth"
 	"github.com/gin-gonic/gin"
 )
 

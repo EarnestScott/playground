@@ -3,7 +3,7 @@ package database
 import (
 	"log"
 
-	"github.com/EarnestScott/Playground/users/models"
+	"github.com/EarnestScott/playground/users/models"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

@@ -3,8 +3,8 @@ package controllers
 import (
 	"net/http"
 
-	"github.com/EarnestScott/Playground/users/database"
-	"github.com/EarnestScott/Playground/users/models"
+	"github.com/EarnestScott/playground/users/database"
+	"github.com/EarnestScott/playground/users/models"
 	"github.com/gin-gonic/gin"
 )
 
