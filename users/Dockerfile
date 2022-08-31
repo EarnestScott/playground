@@ -1,4 +1,4 @@
-FROM golang:1.19.0-alpine
+FROM golang:1.19.0-alpine as builder
 
 WORKDIR /app
 
@@ -15,8 +15,10 @@ COPY database ./database
 COPY middlewares ./middlewares
 COPY models ./models
 
-RUN go build -o /docker-auth-ms
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./bin/main .
 
-EXPOSE 8080
+FROM scratch
 
-CMD ["/docker-auth-ms"]
+COPY --from=builder /app/bin/main .
+
+CMD ["./main"]

@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/EarnestScott/playground/users/controllers"
 	"github.com/EarnestScott/playground/users/database"
 	"github.com/EarnestScott/playground/users/middlewares"
@@ -8,10 +10,14 @@ import (
 )
 
 func main() {
-	database.Connect("host=localhost user=postgresUser password=postgresPW dbname=postgresDB port=5455 sslmode=disable TimeZone=America/Los_Angeles")
+	conn := os.Getenv("DB_CONN")
+	port := ":" + os.Getenv("PORT")
+
+	database.Connect(conn)
+	// database.Connect("host=localhost user=postgresUser password=postgresPW dbname=postgresDB port=5455 sslmode=disable TimeZone=UTC")
 	database.Migrate()
 	router := initRouter()
-	router.Run(":8080")
+	router.Run(port)
 }
 
 func initRouter() *gin.Engine {
