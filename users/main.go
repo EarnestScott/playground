@@ -14,7 +14,6 @@ func main() {
 	port := ":" + os.Getenv("PORT")
 
 	database.Connect(conn)
-	// database.Connect("host=localhost user=postgresUser password=postgresPW dbname=postgresDB port=5455 sslmode=disable TimeZone=UTC")
 	database.Migrate()
 	router := initRouter()
 	router.Run(port)
