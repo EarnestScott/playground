@@ -1,8 +1,7 @@
 pipeline {
     environment {
 imagename = "yenigul/hacicenkins"
-registryCredential = 'yenigul-dockerhub'
-dockerImage = ''
+registryCredential = 'dockerhub-creds'
 }
     agent any
     stages {
@@ -14,7 +13,8 @@ dockerImage = ''
         stage('build') {
             steps {
                 echo 'Building production Docker image'
-                dockerImage = docker.build('users', 'docker-compose.yaml')
+                sh '/usr/local/bin/docker-compose up --build'
+                }
             }
         }
     }
