@@ -4,7 +4,7 @@ imagename = "yenigul/hacicenkins"
 registryCredential = 'yenigul-dockerhub'
 dockerImage = ''
 }
-    agent { any }
+    agent any
     stages {
         stage('pre-build') {
             steps {
