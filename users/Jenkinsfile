@@ -13,7 +13,11 @@ registryCredential = 'dockerhub-creds'
         stage('build') {
             steps {
                 echo 'Building production Docker image'
-                sh '/usr/local/bin/docker-compose up --build'
+                dir("users"){
+                    sh '/usr/local/bin/docker compose build'
+                    sh 'pwd'
+                    sh 'docker image tag users_app earnestdscott/user_app:latest'
+                    sh 'docker image push earnestdscott/user_app:latest'
                 }
             }
         }
