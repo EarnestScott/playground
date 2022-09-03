@@ -17,6 +17,8 @@ registryCredential = 'dockerhub-creds'
                     sh '/usr/local/bin/docker compose build'
                     sh 'pwd'
                     sh 'docker image tag users_app earnestdscott/user_app:latest'
+                }
+                withDockerRegistry([credentialsId: "dockerhub-creds", url: ""]){
                     sh 'docker image push earnestdscott/user_app:latest'
                 }
             }
