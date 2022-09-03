@@ -1,9 +1,20 @@
 pipeline {
-    agent { docker { image 'golang:1.17.5-alpine' } }
+    environment {
+imagename = "yenigul/hacicenkins"
+registryCredential = 'yenigul-dockerhub'
+dockerImage = ''
+}
+    agent { any }
     stages {
+        stage('pre-build') {
+            steps {
+                echo 'Build api and db images for testing ...'
+            }
+        }
         stage('build') {
             steps {
-                sh 'ls'
+                echo 'Building production Docker image'
+                dockerImage = docker.build('users', 'docker-compose.yaml')
             }
         }
     }
