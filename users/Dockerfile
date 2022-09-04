@@ -35,4 +35,4 @@ FROM scratch
 COPY --from=builder /app/bin/main .
 
 #run executable
-CMD ["./main", "-conn $DB_CONN", "-port $PORT"]
+CMD ["./main -conn $DB_CONN -port $PORT"]
