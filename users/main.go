@@ -30,7 +30,7 @@ func main() {
 	// 	panic("No port number specified")
 	// }
 
-	portStr := fmt.Sprint(":%d", port)
+	portStr := fmt.Sprintf(":%s", port)
 	database.Connect(conn)
 	database.Migrate()
 	router := initRouter()
