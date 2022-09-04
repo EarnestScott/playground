@@ -3,8 +3,6 @@ FROM golang:1.19.0-alpine as builder
 
 # enable go modules
 ENV GO111MODULE=on
-ENV DB_CONN=localhost
-ENV PORT=8080
 
 # set current working directory
 WORKDIR /app
