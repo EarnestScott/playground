@@ -14,12 +14,12 @@ registryCredential = 'dockerhub-creds'
             steps {
                 echo 'Building production Docker image'
                 dir("users"){
-                    sh '/usr/local/bin/docker compose build'
+                    sh 'docker compose build'
                     sh 'pwd'
-                    sh 'docker image tag users_app earnestdscott/user_app:latest'
+                    sh 'docker tag users_app earnestdscott/users_app:latest'
                 }
                 withDockerRegistry([credentialsId: "dockerhub-creds", url: ""]){
-                    sh 'docker image push earnestdscott/user_app:latest'
+                    sh 'docker push earnestdscott/users_app:latest'
                 }
             }
         }

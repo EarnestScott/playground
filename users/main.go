@@ -1,7 +1,8 @@
 package main
 
 import (
-	"os"
+	"flag"
+	"fmt"
 
 	"github.com/EarnestScott/playground/users/controllers"
 	"github.com/EarnestScott/playground/users/database"
@@ -10,13 +11,27 @@ import (
 )
 
 func main() {
-	conn := os.Getenv("DB_CONN")
-	port := ":" + os.Getenv("PORT")
 
+	conn := flag.String("conn", "", "Specify db connection string")
+
+	// Declare a flag called age with default value of 0 and a help message
+	port := flag.Int("port", 0, "Specify connection port")
+
+	// Enable command-line parsing
+	flag.Parse()
+
+	if *conn == "" {
+		panic("No connection string specified")
+	}
+	if *port == 0 {
+		panic("No port number specified")
+	}
+
+	portStr := fmt.Sprint(":%d", port)
 	database.Connect(conn)
 	database.Migrate()
 	router := initRouter()
-	router.Run(port)
+	router.Run(portStr)
 }
 
 func initRouter() *gin.Engine {
