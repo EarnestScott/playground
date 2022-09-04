@@ -30,10 +30,9 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./bin/main .
 
 # start a new stage from scratch
 FROM scratch
-ENV DB_CONN=localhost
-ENV PORT=8080
+
 # copy pre-built binary file
 COPY --from=builder /app/bin/main .
 
 #run executable
-CMD ["./main", "-conn $DB_CONN", "-port $PORT"]
+# CMD ["./main", "-conn $DB_CONN", "-port $PORT"]
