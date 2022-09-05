@@ -32,5 +32,7 @@ FROM scratch
 # copy pre-built binary file
 COPY --from=builder /app/bin/main .
 
+EXPOSE 80
+
 #run executable
 CMD ["./main"]

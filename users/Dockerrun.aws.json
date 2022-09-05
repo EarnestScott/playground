@@ -1,0 +1,23 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "users_api",
+            "image": "earnestdscott/bleh:latest",
+            "hostname": "users",
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "memory": 100,
+            "environment": [
+                {
+                    "name": "PORT",
+                    "value": "80"
+                }
+            ]
+        }
+    ]
+}
