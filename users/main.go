@@ -13,8 +13,14 @@ import (
 
 func main() {
 
-	conn := os.Getenv("DB_CONN")
+	dbHostName := os.Getenv("RDS_HOSTNAME")
+	dbPort := os.Getenv("RDS_PORT")
+	dbName := os.Getenv("RDS_DB_NAME")
+	dbUserName := os.Getenv("RDS_USERNAME")
+	dbPass := os.Getenv("RDS_PASSWORD")
 	port := os.Getenv("PORT")
+
+	conn := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=disable", dbUserName, dbPass, dbHostName, dbPort, dbName)
 	// conn := flag.String("conn", "", "Specify db connection string")
 
 	// // Declare a flag called age with default value of 0 and a help message
